@@ -1,0 +1,82 @@
+class HttpStatusModel:    
+    
+    def __init__(self,
+                 code: int,
+                 name: str):
+        self.code = code
+        self.name = name
+
+
+class HttpStatus:
+    CONTINUE = HttpStatusModel(100, "Continue")
+    SWITCHING_PROTOCOLS = HttpStatusModel(101, "Switching Protocols")
+    PROCESSING = HttpStatusModel(102, "Processing")
+    CHECKPOINT = HttpStatusModel(103, "Checkpoint")
+        
+    OK = HttpStatusModel(200, "OK")
+    CREATED = HttpStatusModel(201, "Created")
+    ACCEPTED = HttpStatusModel(202, "Accepted")
+    NON_AUTHORITATIVE_INFORMATION = HttpStatusModel(203, "Non-Authoritative Information")
+    NO_CONTENT = HttpStatusModel(204, "No Content")
+    RESET_CONTENT = HttpStatusModel(205, "Reset Content")
+    PARTIAL_CONTENT = HttpStatusModel(206, "Partial Content")
+    MULTI_STATUS = HttpStatusModel(207, "Multi-Status")
+    ALREADY_REPORTED = HttpStatusModel(208, "Already Reported")
+    IM_USED = HttpStatusModel(226, "IM Used")
+        
+    MULTIPLE_CHOICES = HttpStatusModel(300, "Multiple Choices")
+    MOVED_PERMANENTLY = HttpStatusModel(301, "Moved Permanently")
+    FOUND = HttpStatusModel(302, "Found")
+    MOVED_TEMPORARILY = HttpStatusModel(302, "Moved Temporarily")
+    SEE_OTHER = HttpStatusModel(303, "See Other")
+    NOT_MODIFIED = HttpStatusModel(304, "Not Modified")
+    USE_PROXY = HttpStatusModel(305, "Use Proxy")
+    TEMPORARY_REDIRECT = HttpStatusModel(307, "Temporary Redirect")
+    PERMANENT_REDIRECT = HttpStatusModel(308, "Permanent Redirect")
+        
+    BAD_REQUEST = HttpStatusModel(400, "Bad Request")
+    UNAUTHORIZED = HttpStatusModel(401, "Unauthorized")
+    PAYMENT_REQUIRED = HttpStatusModel(402, "Payment Required")
+    FORBIDDEN = HttpStatusModel(403, "Forbidden")
+    NOT_FOUND = HttpStatusModel(404, "Not Found")
+    METHOD_NOT_ALLOWED = HttpStatusModel(405, "Method Not Allowed")
+    NOT_ACCEPTABLE = HttpStatusModel(406, "Not Acceptable")
+    PROXY_AUTHENTICATION_REQUIRED = HttpStatusModel(407, "Proxy Authentication Required")
+    REQUEST_TIMEOUT = HttpStatusModel(408, "Request Timeout")
+    CONFLICT = HttpStatusModel(409, "Conflict")
+    GONE = HttpStatusModel(410, "Gone")
+    LENGTH_REQUIRED = HttpStatusModel(411, "Length Required")
+    PRECONDITION_FAILED = HttpStatusModel(412, "Precondition Failed")
+    PAYLOAD_TOO_LARGE = HttpStatusModel(413, "Payload Too Large")
+    REQUEST_ENTITY_TOO_LARGE = HttpStatusModel(413, "Request Entity Too Large")
+    URI_TOO_LONG = HttpStatusModel(414, "URI Too Long")
+    REQUEST_URI_TOO_LONG = HttpStatusModel(414, "Request-URI Too Long")
+    UNSUPPORTED_MEDIA_TYPE = HttpStatusModel(415, "Unsupported Media Type")
+    REQUESTED_RANGE_NOT_SATISFIABLE = HttpStatusModel(416, "Requested range not satisfiable")
+    EXPECTATION_FAILED = HttpStatusModel(417, "Expectation Failed")
+    I_AM_A_TEAPOT = HttpStatusModel(418, "I'm a teapot")
+    INSUFFICIENT_SPACE_ON_RESOURCE = HttpStatusModel(419, "Insufficient Space On Resource")
+    METHOD_FAILURE = HttpStatusModel(420, "Method Failure")
+    DESTINATION_LOCKED = HttpStatusModel(421, "Destination Locked")
+    UNPROCESSABLE_ENTITY = HttpStatusModel(422, "Unprocessable Entity")
+    LOCKED = HttpStatusModel(423, "Locked")
+    FAILED_DEPENDENCY = HttpStatusModel(424, "Failed Dependency")
+    UPGRADE_REQUIRED = HttpStatusModel(426, "Upgrade Required")
+    PRECONDITION_REQUIRED = HttpStatusModel(428, "Precondition Required")
+    TOO_MANY_REQUESTS = HttpStatusModel(429, "Too Many Requests")
+    REQUEST_HEADER_FIELDS_TOO_LARGE = HttpStatusModel(431, "Request Header Fields Too Large")
+    UNAVAILABLE_FOR_LEGAL_REASONS = HttpStatusModel(451, "Unavailable For Legal Reasons")
+        
+    INTERNAL_SERVER_ERROR = HttpStatusModel(500, "Internal Server Error")
+    NOT_IMPLEMENTED = HttpStatusModel(501, "Not Implemented")
+    BAD_GATEWAY = HttpStatusModel(502, "Bad Gateway")
+    SERVICE_UNAVAILABLE = HttpStatusModel(503, "Service Unavailable")
+    GATEWAY_TIMEOUT = HttpStatusModel(504, "Gateway Timeout")
+    HTTP_VERSION_NOT_SUPPORTED = HttpStatusModel(505, "HTTP Version not supported")
+    VARIANT_ALSO_NEGOTIATES = HttpStatusModel(506, "Variant Also Negotiates")
+    INSUFFICIENT_STORAGE = HttpStatusModel(507, "Insufficient Storage")
+    LOOP_DETECTED = HttpStatusModel(508, "Loop Detected")
+    BANDWIDTH_LIMIT_EXCEEDED = HttpStatusModel(509, "Bandwidth Limit Exceeded")
+    NOT_EXTENDED = HttpStatusModel(510, "Not Extended")
+    NETWORK_AUTHENTICATION_REQUIRED = HttpStatusModel(511, "Network Authentication Required")
+    
