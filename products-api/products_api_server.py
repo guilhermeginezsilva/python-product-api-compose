@@ -3,18 +3,31 @@ import traceback
 from uuid import UUID
 
 
-from fastapi import FastAPI, Query, Path
+from fastapi import FastAPI, Query, Path, Depends, Header
 from starlette.responses import Response
 
 from app import products_service
 from app.model.dto.product_dto import ProductCreateDto, ProductPatchDto, ProductUpdateDto
 from app.model.product import Product
 from starlette.status import *
-
+from app.security import cognito_auth
+from starlette.middleware.cors import CORSMiddleware
 from exceptions import ApiException, exceptions, exception_response_formatter
 import logging
 
 api_server = FastAPI()
+
+origins = [
+    "*"
+]
+
+api_server.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["POST", "GET", "PUT", "PATCH", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 
 UPDATE_ONLY_FILLED_FIELDS = True
 UPDATE_ALL_FIELDS = False
@@ -45,9 +58,10 @@ def __log_rest_api_exception(api_exception: ApiException) -> None:
 
 
 @api_server.get("/produtos", status_code=HTTP_200_OK)
-def get_all_products(response: Response):
-
+def get_all_products(response: Response,
+                     authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         return products_service.get_products()
     except ApiException as exception:
         return __handle_rest_api_exception(response, exception)
@@ -57,8 +71,10 @@ def get_all_products(response: Response):
 
 @api_server.get("/produtos/{product_id}", status_code=HTTP_200_OK)
 def get_product(product_id: str,
-                response: Response):
+                response: Response,
+                authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         return products_service.get_product(product_id)
     except ApiException as exception:
         return __handle_rest_api_exception(response, exception)
@@ -68,8 +84,10 @@ def get_product(product_id: str,
 
 @api_server.post("/produtos", status_code=HTTP_201_CREATED)
 def create_product(product_dto: ProductCreateDto,
-                   response: Response):
+                   response: Response,
+                   authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         product_dto.validate_model()
         product: Product = product_dto.parse_to_product()
 
@@ -86,8 +104,10 @@ def create_product(product_dto: ProductCreateDto,
 @api_server.put("/produtos/{product_id}", status_code=HTTP_200_OK)
 def update_product(product_id: str,
                    product_dto: ProductUpdateDto,
-                   response: Response):
+                   response: Response,
+                   authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         product_dto.validate_model()
 
         product: Product = product_dto.parse_to_product()
@@ -104,8 +124,10 @@ def update_product(product_id: str,
 @api_server.patch("/produtos/{product_id}", status_code=HTTP_200_OK)
 def patch_product(product_id: str,
                   product_dto: ProductPatchDto,
-                  response: Response):
+                  response: Response,
+                  authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         product_dto.validate_model()
 
         product: Product = product_dto.parse_to_product()
@@ -121,8 +143,10 @@ def patch_product(product_id: str,
 
 @api_server.delete("/produtos/{product_id}", status_code=HTTP_204_NO_CONTENT)
 def delete_product(product_id: str,
-                   response: Response):
+                   response: Response,
+                   authorization: str = Header(None)):
     try:
+        cognito_auth.verify_token(authorization)
         products_service.delete_product(product_id)
         return {}
     except ApiException as exception:

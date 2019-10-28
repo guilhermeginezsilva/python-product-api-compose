@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script src="./js/amazon-cognito-auth.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./js/aws-sdk-2.556.0.min.js"></script>
+        <script src="./js/aws-cognito-sdk.min.js"></script>
+        <script src="./js/aws-sdk.min.js"></script>
+        <script src="./js/amazon-cognito.min.js"></script>
+        <script src="./js/amazon-cognito-identity.min.js"></script>
+
+        <script>
+            var poolData = { 
+                UserPoolId : 'us-east-1_PowfEWN7p',
+                ClientId : '2hq813d8tinusm4pif9bv0i4u9'
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+            function authenticate() {
+                var authenticationData = {
+                    Username : document.getElementById("user").value,
+                    Password : document.getElementById("password").value,
+                };
+                var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+                
+                var userData = {
+                    Username : document.getElementById("user").value,
+                    Pool : userPool
+                };
+                var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+                console.log(cognitoUser);
+
+                attributesData = null;
+
+                cognitoUser.authenticateUser(authenticationDetails, {
+                    onSuccess: function (result) {
+                        var accessToken = result.getAccessToken().getJwtToken();
+                        console.log('Authentication successful', accessToken);
+                        var idToken = result.idToken.jwtToken;
+                        prompt("Copie seu token: Ctrl+C, Enter", idToken)
+                    },
+        
+                    onFailure: function(err) {
+                        console.log('failed to authenticate');
+                        console.log(JSON.stringify(err));
+                        alert("Ocorreu um erro: " + err.message)
+                    },
+                    mfaRequired: function(codeDeliveryDetails) {
+                        cognitoUser.sendMFACode(null, this)
+                    },
+                    newPasswordRequired: function(userAttributes, requiredAttributes) {
+                        cognitoUser.completeNewPasswordChallenge(document.getElementById("password").value, attributesData, this)
+                    }
+                });
+            }
+        </script>
+
+        <style>
+            body {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                color: white;
+            }
+
+            label {
+                margin-top:10px;
+                margin-bottom:5px;
+                margin-right: 5%;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            button {
+                width: 20%;
+            }
+
+            .login-box {
+                display: flex;
+                flex-direction: column;
+                width: 20%;
+            }
+
+            @media (max-width: 1024px)
+            {
+                .login-box {
+                    display: flex;
+                    flex-direction: column;
+                    width: 80%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-box">
+            <h1>Login:</h1>
+            <label>Usuário:<input id="user" type="text" name="user"></label>
+            <label>Senha:<input id="password" type="password" name="password"></label>
+            <br>
+            <button onClick="javascript:authenticate();">Login</button>
+        </div>
+
+    </body>
+</html>
+

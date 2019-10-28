@@ -57,10 +57,10 @@ __exceptions_map = {
     USER_NOT_AUTHORIZED_EXCEPTION: ApiException(
         USER_NOT_AUTHORIZED_EXCEPTION,
         "7000",
-        "The user authentication failed",
+        "The user authentication has failed",
         "Usuário não autorizado, favor verifique suas credenciais",
-        HttpStatus.NO_CONTENT,
-        ExceptionType.BUSINESS_RULES),
+        HttpStatus.FORBIDDEN,
+        ExceptionType.VALIDATION),
 
     UNAVAILABLE_CATEGORY_EXCEPTION: ApiException(
         UNAVAILABLE_CATEGORY_EXCEPTION,

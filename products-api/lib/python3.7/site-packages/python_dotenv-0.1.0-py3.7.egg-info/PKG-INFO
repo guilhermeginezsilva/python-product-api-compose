@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: python-dotenv
+Version: 0.1.0
+Summary: .env file settings for non-heroku setups
+Home-page: http://github.com/theskumar/python-dotenv
+Author: Saurabh Kumar
+Author-email: me+github@saurabh-kumar.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 2.7
