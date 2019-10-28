@@ -32,11 +32,10 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}:8080/produtos",
+					"raw": "{{python-products-api-host}}/produtos",
 					"host": [
 						"{{python-products-api-host}}"
 					],
-					"port": "8080",
 					"path": [
 						"produtos"
 					]
@@ -71,11 +70,10 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}:8080/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
+					"raw": "{{python-products-api-host}}/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
 					"host": [
 						"{{python-products-api-host}}"
 					],
-					"port": "8080",
 					"path": [
 						"produtos",
 						"26d33ab5-73e5-46de-bf02-713a364c6ed1"
@@ -111,11 +109,10 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}:8080/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
+					"raw": "{{python-products-api-host}}/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
 					"host": [
 						"{{python-products-api-host}}"
 					],
-					"port": "8080",
 					"path": [
 						"produtos",
 						"26d33ab5-73e5-46de-bf02-713a364c6ed1"
@@ -142,11 +139,10 @@
 					}
 				],
 				"url": {
-					"raw": "{{python-products-api-host}}:8080/produtos/a4f10e81-0996-45bc-961c-df15698077b9",
+					"raw": "{{python-products-api-host}}/produtos/a4f10e81-0996-45bc-961c-df15698077b9",
 					"host": [
 						"{{python-products-api-host}}"
 					],
-					"port": "8080",
 					"path": [
 						"produtos",
 						"a4f10e81-0996-45bc-961c-df15698077b9"
@@ -173,11 +169,10 @@
 					}
 				],
 				"url": {
-					"raw": "{{python-products-api-host}}:8080/produtos/a04d1a42-20aa-485a-9578-d3d2f9d7db8a",
+					"raw": "{{python-products-api-host}}/produtos/a04d1a42-20aa-485a-9578-d3d2f9d7db8a",
 					"host": [
 						"{{python-products-api-host}}"
 					],
-					"port": "8080",
 					"path": [
 						"produtos",
 						"a04d1a42-20aa-485a-9578-d3d2f9d7db8a"

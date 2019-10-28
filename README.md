@@ -6,6 +6,11 @@ Este microserviço é um CRUD de produtos feito em python
 Para rodar o projeto é necessário ter instalado o docker e o docker-compose. O projeto já está configurado com um arquivo docker-compose, desta forma é necessário apenas:
 
 1. Navegar até a pasta raiz deste repositório
+
+2. Buildar a imagem do python
+
+		docker build -t python-products-api:v1 ./products-api
+
 2. Buildar o docker-compose
 
 		docker-compose build
@@ -16,6 +21,10 @@ Para rodar o projeto é necessário ter instalado o docker e o docker-compose. O
 
 4. O docker compose vai subir tanto o banco de dados quanto a aplicação.
 O banco de dados responde na porta 3306 e a aplicação na porta 8080.
+
+## Como rodar na AWS?
+
+	Apenas siga os passos abaixo e selecione as variáveis de ambiente AWS ao invés de local no postman. Foi disponibilizado um load balancer na amazon já configurado com a aplicação.
 
 ## Como chamar as rotas?
 
