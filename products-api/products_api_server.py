@@ -75,6 +75,7 @@ def get_product(product_id: str,
                 authorization: str = Header(None)):
     try:
         cognito_auth.verify_token(authorization)
+        validate_product_id(product_id)
         return products_service.get_product(product_id)
     except ApiException as exception:
         return __handle_rest_api_exception(response, exception)
@@ -108,6 +109,7 @@ def update_product(product_id: str,
                    authorization: str = Header(None)):
     try:
         cognito_auth.verify_token(authorization)
+        validate_product_id(product_id)
         product_dto.validate_model()
 
         product: Product = product_dto.parse_to_product()
@@ -128,6 +130,7 @@ def patch_product(product_id: str,
                   authorization: str = Header(None)):
     try:
         cognito_auth.verify_token(authorization)
+        validate_product_id(product_id)
         product_dto.validate_model()
 
         product: Product = product_dto.parse_to_product()
@@ -147,6 +150,7 @@ def delete_product(product_id: str,
                    authorization: str = Header(None)):
     try:
         cognito_auth.verify_token(authorization)
+        validate_product_id(product_id)
         products_service.delete_product(product_id)
         return {}
     except ApiException as exception:
@@ -154,6 +158,12 @@ def delete_product(product_id: str,
     except Exception as exception:
         return __handle_unexpected_exception(response)
 
+
+def validate_product_id(product_id: str):
+    if product_id is None or len(product_id) != 36:
+        exception = exceptions.get(exceptions.FIELD_CONSTRAINT_VIOLATION_EXCEPTION)
+        exception.append_validation_error("O id do produto é inválido", "product_id")
+        raise exception
 
 if __name__ == "__main__":
     uvicorn.run(api_server, host="0.0.0.0", port=8080)

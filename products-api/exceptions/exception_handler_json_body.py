@@ -20,7 +20,7 @@ class ExceptionHandlerJsonBody:
             "status": self.status.name,
             "error": self.message,
             "errorCode": self.error_code,
-            "validation_errors": self.validation_errors,
+            "validationErrors": self.validation_errors,
             "messages": self.data
         }
     

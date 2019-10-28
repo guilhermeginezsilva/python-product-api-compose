@@ -18,7 +18,7 @@ SQL_QUERY_INSERT_CATEGORY = "INSERT INTO TB_CATEGORY (NAME, PRODUCT_ID) VALUES (
 SQL_QUERY_DELETE_CATEGORY_BY_PRODUCT = "DELETE FROM TB_CATEGORY WHERE PRODUCT_ID = %s"
 
 
-def find_all() -> Product:
+def find_all() -> []:
     conn = None
     try:
         conn = pymysql.connect(**environment_config.get_db_config())

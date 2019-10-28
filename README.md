@@ -46,7 +46,19 @@ Para chamar as rotas é necessário alguma ferramenta que faça chamadas REST e 
 
 4. Pegue o token copiado do passo 2 e substitua na variável de ambiente local e aws do postman, variável access-token
 
-5. Pronto, o ambiente está configurado
+5. No postman desative a verificação de certificados, pois o load balancer tem um certificado interno AWS, então o browser e o postman não vão conseguir validar as informações da organização do certificado
+
+6. Pronto, o ambiente está configurado
+
+## Como rodar os testes?
+
+1. Para rodar os testes navegue até a pasta do projeto:
+
+		cd ./products-api
+
+2. Execute o comando abaixo, para isso é necessário ter o python 3.7 instalado na máquina:
+
+		python -m unittest -v
 
 ## Arquitetura do projeto:
 O projeto é um CRUD e está dividido em:

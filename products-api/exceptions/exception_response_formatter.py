@@ -39,8 +39,8 @@ def get_body(api_exception: ApiException) -> dict:
     if exception_json_body.get("errorCode") is None:
         del exception_json_body["errorCode"]
 
-    if exception_json_body.get("validation_errors") is None or len(exception_json_body.get("validation_errors")) == 0:
-        del exception_json_body["validation_errors"]
+    if exception_json_body.get("validationErrors") is None or len(exception_json_body.get("validationErrors")) == 0:
+        del exception_json_body["validationErrors"]
 
     if exception_json_body.get("messages") is None or len(exception_json_body.get("messages")) == 0:
         del exception_json_body["messages"]

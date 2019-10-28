@@ -28,13 +28,13 @@ def update_product(product: Product, only_filled_fields: bool) -> None:
 
 
 def __copy_product_ignoring_null(origin_product: Product, destiny_product: Product) -> None:
-    if origin_product.name:
+    if origin_product.name is not None:
         destiny_product.name = origin_product.name
-    if origin_product.categories:
+    if origin_product.categories is not None:
         destiny_product.categories = origin_product.categories
-    if origin_product.price:
+    if origin_product.price is not None:
         destiny_product.price = origin_product.price
-    if origin_product.url:
+    if origin_product.url is not None:
         destiny_product.url = origin_product.url
 
 
