@@ -50,16 +50,24 @@ Para chamar as rotas é necessário alguma ferramenta que faça chamadas REST e 
 
 ## Arquitetura do projeto:
 O projeto é um CRUD e está dividido em:
-	* Inicializador da aplicação que também é o controller que recebe as requisições
-	* Serviço de produtos contendo as regras de negócio
-	* DAO de produtos para acessar o banco de dados
-	* Utilitários de segurança para validar o token JWT e de gerenciamento das variáveis de ambiente utilizadas pela aplicação
+	
+* Inicializador da aplicação que também é o controller que recebe as requisições
+	
+* Serviço de produtos contendo as regras de negócio
+
+* DAO de produtos para acessar o banco de dados
+
+* Utilitários de segurança para validar o token JWT e de gerenciamento das variáveis de ambiente utilizadas pela aplicação
 
 Frameworks e bibliotecas:
-	* Fastapi: foi utilizado para fazer o controle das requisições
-	* Exceptions (fontes locais): para padronizar as respostas de erro e ter mais controle sobre as mensagens
-	* Validators (fontes locais): para conseguir integrar as validações com o mecanismo de exceptions
-	* Cognitojwt: Para autenticar o token do usuário na AWS
+
+* Fastapi: foi utilizado para fazer o controle das requisições
+
+* Exceptions (fontes locais): para padronizar as respostas de erro e ter mais controle sobre as mensagens
+
+* Validators (fontes locais): para conseguir integrar as validações com o mecanismo de exceptions
+
+* Cognitojwt: Para autenticar o token do usuário na AWS
 
 ## Regras:
 
