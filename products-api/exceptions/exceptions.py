@@ -1,7 +1,8 @@
 import copy
+
 from exceptions.api_exception import ApiException
-from exceptions.http_status import HttpStatus
 from exceptions.exception_type import ExceptionType
+from exceptions.http_status import HttpStatus
 
 __SERVER_ERROR_LOGGING_MESSAGE = "An unexpected exception has been thrown"
 __SERVER_ERROR_RESPONSE_MESSAGE = "Houve um erro inesperado na API por favor tente novamente daqui alguns instantes. " +\

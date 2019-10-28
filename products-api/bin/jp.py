@@ -1,8 +1,8 @@
 #!/home/0-dev/projects/entrevistas/tango-tech/products-api/bin/python
 
-import sys
-import json
 import argparse
+import json
+import sys
 from pprint import pformat
 
 import jmespath

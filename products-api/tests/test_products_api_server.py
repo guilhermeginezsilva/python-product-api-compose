@@ -1,9 +1,11 @@
-import unittest
 import copy
+import unittest
 from unittest.mock import patch
+
 from starlette.responses import Response
 
 import products_api_server
+from app.model.auth_user import AuthUser
 from app.model.dto.product_dto import ProductCreateDto, ProductPatchDto, ProductUpdateDto
 from app.model.product import Product
 from exceptions import exceptions
@@ -97,6 +99,8 @@ class ProductsApiServerTest(unittest.TestCase):
     DEFAULT_INVALID_PRODUCT_PATCH_NO_NAME_WITH_URL_DTO.price = 1.0
     DEFAULT_INVALID_PRODUCT_PATCH_NO_NAME_WITH_URL_DTO.url = "sgfsdgsd"
 
+    DEFAULT_AUTH_USER = AuthUser("b9225de5-3090-48c5-9200-94f8039384ff", "teste@gmail.com")
+
     @patch('app.products_service.delete_product', autospec=True)
     @patch('app.products_service.update_product', autospec=True)
     @patch('app.products_service.create_product', autospec=True)
@@ -112,7 +116,7 @@ class ProductsApiServerTest(unittest.TestCase):
             update_product_mock,
             delete_product_mock
     ):
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
 
         expected_exception = exceptions.get(exceptions.FIELD_CONSTRAINT_VIOLATION_EXCEPTION)
 
@@ -196,7 +200,7 @@ class ProductsApiServerTest(unittest.TestCase):
             delete_product_mock
 
     ):
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
         exception = exceptions.get(exceptions.USER_NOT_AUTHORIZED_EXCEPTION)
 
         get_products_mock.side_effect = exception
@@ -252,22 +256,26 @@ class ProductsApiServerTest(unittest.TestCase):
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_get_all_products_when_products_available(self, verify_token_mock, get_products_mock):
 
-        verify_token_mock.return_value = None
-        get_products_mock.return_value = self.DEFAULT_2_PRODUCTS_ARRAY
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
+        get_products_mock.return_value = copy.deepcopy(self.DEFAULT_2_PRODUCTS_ARRAY)
 
         products: [] = products_api_server.get_all_products(
             self.DEFAULT_RESPONSE_DICT,
             self.DEFAULT_AUTH_TOKEN
         )
 
-        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY, products)
+        for i in range(len(products)):
+            self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[i].name, products[i].name)
+            self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[i].categories, products[i].categories)
+            self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[i].price, products[i].price)
+            self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[i].url, products[i].url)
 
     @patch('app.products_service.get_product', autospec=True)
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_get_product_when_product_exists(self, verify_token_mock, get_products_mock):
 
-        verify_token_mock.return_value = None
-        get_products_mock.return_value = self.DEFAULT_2_PRODUCTS_ARRAY[0]
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
+        get_products_mock.return_value = copy.deepcopy(self.DEFAULT_2_PRODUCTS_ARRAY[0])
 
         product: Product = products_api_server.get_product(
             self.DEFAULT_PRODUCT_ID,
@@ -275,13 +283,16 @@ class ProductsApiServerTest(unittest.TestCase):
             self.DEFAULT_AUTH_TOKEN
         )
 
-        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[0], product)
+        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[0].name, product.name)
+        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[0].categories, product.categories)
+        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[0].price, product.price)
+        self.assertEqual(self.DEFAULT_2_PRODUCTS_ARRAY[0].url, product.url)
 
     @patch('app.products_service.get_product', autospec=True)
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_get_product_when_method_is_called(self, verify_token_mock, get_products_mock):
 
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
 
         exception = exceptions.get(exceptions.PRODUCT_NOT_FOUND_EXCEPTION)
         get_products_mock.side_effect = exception
@@ -297,7 +308,7 @@ class ProductsApiServerTest(unittest.TestCase):
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_create_product_when_product_is_ok(self, verify_token_mock, create_product_mock):
 
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
         create_product_mock.return_value = None
 
         products_api_server.create_product(
@@ -311,7 +322,7 @@ class ProductsApiServerTest(unittest.TestCase):
     @patch('app.products_service.update_product', autospec=True)
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_update_product_when_product_is_ok(self, verify_token_mock, update_product_mock):
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
         update_product_mock.return_value = None
 
         products_api_server.update_product(
@@ -326,7 +337,7 @@ class ProductsApiServerTest(unittest.TestCase):
     @patch('app.products_service.update_product', autospec=True)
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_patch_product_when_product_is_ok(self, verify_token_mock, update_product_mock):
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
         update_product_mock.return_value = None
 
         products_api_server.patch_product(
@@ -341,7 +352,7 @@ class ProductsApiServerTest(unittest.TestCase):
     @patch('app.products_service.delete_product', autospec=True)
     @patch('app.security.cognito_auth.verify_token', autospec=True)
     def test_should_delete_product_when_product_is_ok(self, verify_token_mock, delete_product_mock):
-        verify_token_mock.return_value = None
+        verify_token_mock.return_value = copy.deepcopy(self.DEFAULT_AUTH_USER)
         delete_product_mock.return_value = None
 
         products_api_server.delete_product(

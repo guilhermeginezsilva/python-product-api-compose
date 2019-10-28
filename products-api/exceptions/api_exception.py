@@ -1,5 +1,5 @@
-from exceptions.http_status import HttpStatusModel
 from exceptions.exception_type import ExceptionType
+from exceptions.http_status import HttpStatusModel
 
 
 class ApiException(Exception):

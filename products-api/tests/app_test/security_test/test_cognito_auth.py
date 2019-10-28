@@ -1,7 +1,4 @@
 import unittest
-import cognitojwt
-
-from requests import patch
 
 from app.security import cognito_auth
 from exceptions import ApiException, exceptions

@@ -1,8 +1,9 @@
 import unittest
 from unittest import mock
 from unittest.mock import patch
-from app.model.product import Product
+
 from app import products_service
+from app.model.product import Product
 
 
 class ProductsServiceTest(unittest.TestCase):

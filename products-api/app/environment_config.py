@@ -12,8 +12,8 @@ db_pass = os.getenv("DB_PASS", "devPassword")
 db_name = os.getenv("DB_SCHEMA", "python-products-api")
 db_conn_timeout = int(os.getenv("DB_TIMEOUT", 30))
 
-aws_cognito_region = os.getenv("AWS_COGNITO_REGION", None)
-aws_cognito_user_pool_id = os.getenv("AWS_COGNITO_USER_POOL_ID", None)
+aws_cognito_region = os.getenv("AWS_COGNITO_REGION", "us-east-1")
+aws_cognito_user_pool_id = os.getenv("AWS_COGNITO_USER_POOL_ID", "us-east-1_PowfEWN7p")
 aws_cognito_enabled = bool(os.getenv("AWS_COGNITO_ENABLED", True))
 
 logging.info("db_host: {}".format(db_host))

@@ -1,14 +1,15 @@
-from app.model.product import Product
 import uuid
+
 from app.database import products_dao
+from app.model.product import Product
 
 
-def get_products() -> []:
-    return products_dao.find_all()
+def get_products(auth_id: str) -> []:
+    return products_dao.find_all(auth_id)
 
 
-def get_product(product_id: str) -> Product:
-    return products_dao.find_one(product_id)
+def get_product(auth_id: str, product_id: str) -> Product:
+    return products_dao.find_one(auth_id, product_id)
 
 
 def create_product(product: Product) -> None:
@@ -17,7 +18,7 @@ def create_product(product: Product) -> None:
 
 
 def update_product(product: Product, only_filled_fields: bool) -> None:
-    db_product: Product = products_dao.find_one(product.id)
+    db_product: Product = products_dao.find_one(product.user_id, product.id)
 
     if only_filled_fields:
         __copy_product_ignoring_null(product, db_product)
@@ -38,8 +39,8 @@ def __copy_product_ignoring_null(origin_product: Product, destiny_product: Produ
         destiny_product.url = origin_product.url
 
 
-def delete_product(product_id: str) -> None:
+def delete_product(auth_id: str, product_id: str) -> None:
     if product_id is None:
         return
 
-    products_dao.delete(product_id)
+    products_dao.delete(auth_id, product_id)

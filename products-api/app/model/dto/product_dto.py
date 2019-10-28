@@ -1,11 +1,12 @@
 from typing import List
 
 from fastapi import Query
-from pydantic import BaseModel, UrlStr, validator
+from pydantic import BaseModel
+
+from app.model import category
 from app.model.product import Product
 from exceptions import exceptions
 from validator import validators
-from app.model import category
 
 
 class ProductDto(BaseModel):

@@ -12,12 +12,13 @@ specifications from styles.xml in STYLE_FILE.odt.
 #
 # Author: Michael Schutte <michi@uiae.at>
 
-from lxml import etree
+import os
+import shutil
 import sys
 import zipfile
 from tempfile import mkstemp
-import shutil
-import os
+
+from lxml import etree
 
 NAMESPACES = {
     "style": "urn:oasis:names:tc:opendocument:xmlns:style:1.0",

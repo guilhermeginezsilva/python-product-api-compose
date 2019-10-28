@@ -1,4 +1,5 @@
 import unittest
+
 from app.model.dto.product_dto import ProductDto
 from app.model.product import Product
 
