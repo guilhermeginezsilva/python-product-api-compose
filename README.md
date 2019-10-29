@@ -24,7 +24,7 @@ O banco de dados responde na porta 3306 e a aplicação na porta 8080.
 
 ## Como rodar na AWS?
 
-	Apenas siga os passos abaixo e selecione as variáveis de ambiente AWS ao invés de local no postman. Foi disponibilizado um load balancer na amazon já configurado com a aplicação.
+Apenas siga os passos abaixo e selecione as variáveis de ambiente AWS ao invés de local no postman. Foi disponibilizado um load balancer na amazon já configurado com a aplicação.
 
 ## Como chamar as rotas?
 
