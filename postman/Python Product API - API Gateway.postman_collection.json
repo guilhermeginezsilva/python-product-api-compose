@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "49a83e1c-f74f-4640-a316-02ea4262099d",
-		"name": "Python Product API",
+		"_postman_id": "6366774a-1782-48df-94c7-67c00a2a5962",
+		"name": "Python Product API - API Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -32,9 +32,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos",
+					"raw": "{{api-gateway}}/produtos",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos"
@@ -70,13 +70,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
+					"raw": "{{api-gateway}}/produtos/02aac025-283f-43e6-a0d9-78b276e9ad8b",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos",
-						"26d33ab5-73e5-46de-bf02-713a364c6ed1"
+						"02aac025-283f-43e6-a0d9-78b276e9ad8b"
 					]
 				}
 			},
@@ -109,13 +109,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos/26d33ab5-73e5-46de-bf02-713a364c6ed1",
+					"raw": "{{api-gateway}}/produtos/796ee845-bb3d-46a7-98c5-1b2a8ac066fa",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos",
-						"26d33ab5-73e5-46de-bf02-713a364c6ed1"
+						"796ee845-bb3d-46a7-98c5-1b2a8ac066fa"
 					]
 				}
 			},
@@ -139,13 +139,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos/a4f10e81-0996-45bc-961c-df15698077b9",
+					"raw": "{{api-gateway}}/produtos/796ee845-bb3d-46a7-98c5-1b2a8ac066fa",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos",
-						"a4f10e81-0996-45bc-961c-df15698077b9"
+						"796ee845-bb3d-46a7-98c5-1b2a8ac066fa"
 					]
 				}
 			},
@@ -169,13 +169,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos/a04d1a42-20aa-485a-9578-d3d2f9d7db8a",
+					"raw": "{{api-gateway}}/produtos/796ee845-bb3d-46a7-98c5-1b2a8ac066fa",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos",
-						"a04d1a42-20aa-485a-9578-d3d2f9d7db8a"
+						"796ee845-bb3d-46a7-98c5-1b2a8ac066fa"
 					]
 				}
 			},
@@ -199,12 +199,89 @@
 					}
 				],
 				"url": {
-					"raw": "{{python-products-api-host}}/produtos",
+					"raw": "{{api-gateway}}/produtos",
 					"host": [
-						"{{python-products-api-host}}"
+						"{{api-gateway}}"
 					],
 					"path": [
 						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPTIONS /produtos",
+			"request": {
+				"method": "OPTIONS",
+				"header": [
+					{
+						"key": "Host",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "g2stecnologia.com.br",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "g2stecnologia.com.br",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://tfokqohv69.execute-api.us-east-1.amazonaws.com/dev/apis/v1/produtos",
+					"protocol": "https",
+					"host": [
+						"tfokqohv69",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"apis",
+						"v1",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPTIONS /produtos/{id}",
+			"request": {
+				"method": "OPTIONS",
+				"header": [
+					{
+						"key": "Host",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "g2stecnologia.com.br",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "g2stecnologia.com.br",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://tfokqohv69.execute-api.us-east-1.amazonaws.com/dev/apis/v1/produtos/796ee845-bb3d-46a7-98c5-1b2a8ac066fa",
+					"protocol": "https",
+					"host": [
+						"tfokqohv69",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"apis",
+						"v1",
+						"produtos",
+						"796ee845-bb3d-46a7-98c5-1b2a8ac066fa"
 					]
 				}
 			},

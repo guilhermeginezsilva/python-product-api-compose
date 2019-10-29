@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "49a83e1c-f74f-4640-a316-02ea4262099d",
+		"name": "Python Product API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Maquina de barbear5\",\n\t\"categories\": [\"eletrônicos\", \"utensílios\", \"cama e mesa\", \"cozinha\", \"higiene pessoal\"],\n\t\"price\": \"1.99\",\n\t\"url\": \"Maquina-de-barbear5dfaujsnfadsfa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Maquina de barbear2\",\n\t\"categories\": [\"eletrônicos\", \"utensílios\"],\n\t\"price\": \"5000.00\",\n\t\"url\": \"Maquina-de-barbear264564564564-jhgjf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos/b9225de5-3090-48c5-9200-94f8039384ff",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos",
+						"b9225de5-3090-48c5-9200-94f8039384ff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Product",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Maquina de barbear2\",\n\t\"categories\": [\"eletrônicos\"],\n\t\"url\": \"Maquina-de-barbear264564564564-jhgjf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos/b9225de5-3090-48c5-9200-94f8039384ff",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos",
+						"b9225de5-3090-48c5-9200-94f8039384ff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos/b9225de5-3090-48c5-9200-94f8039384ff",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos",
+						"b9225de5-3090-48c5-9200-94f8039384ff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos/b9225de5-3090-48c5-9200-94f8039384ff",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos",
+						"b9225de5-3090-48c5-9200-94f8039384ff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{python-products-api-host}}/produtos",
+					"host": [
+						"{{python-products-api-host}}"
+					],
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
