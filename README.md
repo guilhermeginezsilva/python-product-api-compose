@@ -38,11 +38,21 @@ Para chamar as rotas é necessário alguma ferramenta que faça chamadas REST e 
 
 3. Para ajudar na chamada das APIs estou disponibilizando uma coleção de chamadas da aplicação postman já configurada com as rotas. Faça o download aqui da coleção e das variáveis de ambiente:
 
-	https://product-api-auth.s3.amazonaws.com/Python+Product+API.postman_collection.json
+	Coleção com requests locais:
 
-	https://product-api-auth.s3.amazonaws.com/AWS+Dev.postman_environment.json
+	https://product-api-auth.s3.amazonaws.com/postman/Python+Product+API.postman_collection.json
 
-	https://product-api-auth.s3.amazonaws.com/Local.postman_environment.json
+	Variáveis de ambiente para rodar local:
+
+	https://product-api-auth.s3.amazonaws.com/postman/Local.postman_environment.json
+
+	Coleção com requests do API Gateway da AWS:
+
+	https://product-api-auth.s3.amazonaws.com/postman/Python+Product+API+-+API+Gateway.postman_collection.json
+
+	Variáveis de ambiente para rodar com a AWS:
+
+	https://product-api-auth.s3.amazonaws.com/postman/AWS+Dev.postman_environment.json
 
 4. Pegue o token copiado do passo 2 e substitua na variável de ambiente local e aws do postman, variável access-token
 
@@ -133,8 +143,17 @@ url
 
 Pontos que devem constar:
 
-* Autenticação usando JWT
-* Validação de JSON e campos
-* Mensagem de erros personalizadas
-* Disponibilizar a API em serviços de hospedagem, tais como: Heroku,  Azure, AWS, etc.
-* Habilitação de CORS
+* Autenticação usando JWT - OK
+* Validação de JSON e campos - OK
+* Mensagem de erros personalizadas - OK
+* Disponibilizar a API em serviços de hospedagem, tais como: Heroku,  Azure, AWS, etc. - OK
+* Habilitação de CORS - OK
+
+Pontos extras:
+
+* Criar uma interface front-end para consumo da API - Pendente
+* Utilizar uma framework SPA, tal como: React, Vue ou Angular. - Pendente
+* Criar layout responsivo na interface front-end - Pendente
+* Habilitação de SSL com nota mínima A validado pelo site * https://www.ssllabs.com/ssltest/index.html - OK
+* Segurança de cabeçalhos com nota mínima B no site https://* securityheaders.com/ - Pendente
+* Performance grade mínima de 85 no site https://* tools.pingdom.com/ - OK

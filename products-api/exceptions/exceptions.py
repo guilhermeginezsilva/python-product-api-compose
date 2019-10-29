@@ -76,7 +76,7 @@ __exceptions_map = {
         "0002",
         "Product not found",
         "O produto solicitado não foi encontrado",
-        HttpStatus.NO_CONTENT,
+        HttpStatus.NOT_FOUND,
         ExceptionType.BUSINESS_RULES),
 
     PRODUCT_SAVE_TO_DATABASE_EXCEPTION: ApiException(
