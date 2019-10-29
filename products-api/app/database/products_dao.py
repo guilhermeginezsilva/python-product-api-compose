@@ -139,7 +139,9 @@ def insert(product: Product):
                 exception.append_to_log("Product: {}".format(str(product)))
                 raise exception
 
-            for category in product.categories:
+            distinct_categories = list(set(product.categories))
+
+            for category in distinct_categories:
                 cursor.execute(SQL_QUERY_INSERT_CATEGORY, (category, product.id))
 
                 if cursor.rowcount != 1:
@@ -182,7 +184,10 @@ def update(product: Product):
             cursor.execute(SQL_QUERY_UPDATE_PRODUCT, (product.name, product.price, product.url, product.id, product.user_id))
 
             cursor.execute(SQL_QUERY_DELETE_CATEGORY_BY_PRODUCT, product.id)
-            for category in product.categories:
+
+            distinct_categories = list(set(product.categories))
+
+            for category in distinct_categories:
                 cursor.execute(SQL_QUERY_INSERT_CATEGORY, (category, product.id))
 
                 if cursor.rowcount != 1:
