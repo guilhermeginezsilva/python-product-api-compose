@@ -18,7 +18,7 @@ jose==1.0.0
 jwt==0.6.1
 pyasn1==0.4.7
 pycparser==2.19
-pydantic==0.32.2
+pydantic==1.6.2
 PyJWT==1.7.1
 PyMySQL==0.9.3
 python-dateutil==2.8.0
